@@ -169,7 +169,6 @@ func fall():
 		current_state = main_character_states.IDLE
 
 
-
 ## Otros métodos
 # Se ejecuta cuando se detecta un Input del teclado para mover al main-character
 func player_movement():
@@ -179,12 +178,12 @@ func player_movement():
 	
 	# Mover al personaje
 	move_and_slide()
-	
+
+## Animaciones del player
 func player_animations():
 	if current_state == main_character_states.JUMPING or current_state == main_character_states.FALLING:
 		main_character_animations.play("Jump")
 		
-
 	if velocity.x > 0: 
 		main_character_animations.play("Walk")
 		main_character_animations.flip_h = false
@@ -200,5 +199,3 @@ func player_animations():
 # Gravedad que afecta al player 
 func gravity(delta):
 	velocity.y = velocity.y +(GRAVITY_VALUE * delta)
-	
-# Prueba para comprobar que la rama remota funciona

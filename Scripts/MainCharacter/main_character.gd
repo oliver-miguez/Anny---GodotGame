@@ -26,6 +26,7 @@ func _physics_process(delta):
 	match  current_state:
 		#Estado IDLE
 		main_character_states.IDLE:
+			player_movement()
 			if not is_on_floor(): # FALLING
 				current_state = main_character_states.FALLING
 			if Input.is_action_just_pressed("Up_Input") and is_on_floor(): # JUMPING
@@ -45,6 +46,7 @@ func _physics_process(delta):
 
 		# Estado Walking
 		main_character_states.WALKING:
+			player_movement()
 			if not is_on_floor():
 				current_state = main_character_states.FALLING # FALLING
 			else:
@@ -56,7 +58,8 @@ func _physics_process(delta):
 				elif Input.is_action_pressed("Shift") and velocity.x != 0: # RUNNING
 					enter_run()
 					current_state = main_character_states.RUNNING
-				elif Input.is_action_pressed("Down_Input"):  # CROUCHING
+
+        elif Input.is_action_pressed("Down_Input"):  # CROUCHING
 					# Comprobamos el INPUT, no solo la velocidad.
 					var movement_input_active = Input.is_action_pressed("Left_Input") or Input.is_action_pressed("Right_Input")
 					
@@ -68,6 +71,7 @@ func _physics_process(delta):
 						# estado CROUCHING NO se active. 
 						# El código continuará abajo y permanecerá en WALKING.
 						pass
+
 				else:
 					current_state = main_character_states.WALKING # WALKING
 					
@@ -75,17 +79,23 @@ func _physics_process(delta):
 		main_character_states.CROUCHING:
 					# El jugador PERMANECE en este estado mientras Down_Input esté presionado.
 					if not Input.is_action_pressed("Down_Input") and is_on_floor():
-						# Restaura la velocidad (variable speed, aunque player_movement la usará)
+
+						# 1. Restaura la velocidad (variable speed, aunque player_movement la usará)
 						crouch_velocity() 
 						
-						# Restablecer movimientos (cambio de estado)
+						# 2. Decide si ir a IDLE o WALKING. Como velocity.x aún está en 0
+						#    al salir del estado, comprobamos si hay input de movimiento.
 						var direction := Input.get_action_strength("Right_Input") - Input.get_action_strength("Left_Input")
+						
 						if direction != 0:
 							current_state = main_character_states.WALKING
 						else:
 							current_state = main_character_states.IDLE
 
-		#Estado Hitting
+					# Si Down_Input sigue presionado, no hacemos nada más, 
+					# y player_movement() mantendrá la velocidad en 0.
+
+    #Estado Hitting
 		main_character_states.HITTING:
 			punch()
 			

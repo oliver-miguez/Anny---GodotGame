@@ -59,7 +59,7 @@ func _physics_process(delta):
 					enter_run()
 					current_state = main_character_states.RUNNING
 
-        elif Input.is_action_pressed("Down_Input"):  # CROUCHING
+				elif Input.is_action_pressed("Down_Input"):  # CROUCHING
 					# Comprobamos el INPUT, no solo la velocidad.
 					var movement_input_active = Input.is_action_pressed("Left_Input") or Input.is_action_pressed("Right_Input")
 					
@@ -95,7 +95,7 @@ func _physics_process(delta):
 					# Si Down_Input sigue presionado, no hacemos nada más, 
 					# y player_movement() mantendrá la velocidad en 0.
 
-    #Estado Hitting
+	#Estado Hitting
 		main_character_states.HITTING:
 			punch()
 			

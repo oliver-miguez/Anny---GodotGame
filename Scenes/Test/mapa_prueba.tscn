@@ -26,13 +26,25 @@ position = Vector2(150, 176)
 position = Vector2(207, 102)
 zoom = Vector2(4, 4)
 
+[node name="PruebaMusica" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(200, 216)
 shape = SubResource("RectangleShape2D_0swn8")
 
-[node name="PruebaMusica" type="AudioStreamPlayer2D" parent="."]
-autoplay = true
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(613, 215)
+shape = SubResource("RectangleShape2D_0swn8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-211, 215)
+shape = SubResource("RectangleShape2D_0swn8")
 
 [connection signal="finished" from="PruebaMusica" to="." method="_on_prueba_musica_finished"]

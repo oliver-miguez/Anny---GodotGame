@@ -7,7 +7,7 @@ var current_state = main_character_states.IDLE # Estado inicial
 
 @export var speed = 70 # Velocidad del player
 @export var jump_force = 300 # Fuerza con la que salta el player 
-@export var running_speed = 160 # Velocidad cuando el player está en el estado de correr
+@export var running_speed = 200 # Velocidad cuando el player está en el estado de correr
 @export var speed_null = 0 # Para administrar la velocidad del player por ejemplo cuando se agacha, para evitar que se mueva
 const  GRAVITY_VALUE = 980.0 # Fuerza de gravedad
 
@@ -112,7 +112,7 @@ func _physics_process(delta):
 				exit_run()
 				current_state = main_character_states.IDLE # IDLE
 			elif Input.is_action_just_pressed("Up_Input") and is_on_floor():
-				exit_run()
+				#exit_run()
 				current_state = main_character_states.JUMPING # JUMPING
 				jump()
 			elif velocity.x != 0:

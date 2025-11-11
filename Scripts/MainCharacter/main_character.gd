@@ -16,7 +16,6 @@ const  GRAVITY_VALUE = 980.0 # Fuerza de gravedad
 @onready var jump_sound = $JumpSound # Sonido que hace cuando salta
 
 
-
 ## Se ejecuta en cada frame 
 func _physics_process(delta):
 	if not is_on_floor(): # Aplica gravedad al player  cuando no este en el suelo

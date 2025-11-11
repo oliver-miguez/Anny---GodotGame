@@ -61,18 +61,7 @@ func _physics_process(delta):
 					current_state = main_character_states.RUNNING
 
 				elif Input.is_action_pressed("Down_Input"):  # CROUCHING
-					# Comprobamos el INPUT, no solo la velocidad.
-					var movement_input_active = Input.is_action_pressed("Left_Input") or Input.is_action_pressed("Right_Input")
-					
-					if not movement_input_active: # si no se detectó ningún Input
-						current_state = main_character_states.CROUCHING
-						crouch_no_velocity() # Esto fuerza velocity.x = 0
-					else:
-						# Si hay input de movimiento, sigue caminando o deja que el 
-						# estado CROUCHING NO se active. 
-						# El código continuará abajo y permanecerá en WALKING.
-						pass
-
+					current_state = main_character_states.CROUCHING
 				else:
 					current_state = main_character_states.WALKING # WALKING
 					

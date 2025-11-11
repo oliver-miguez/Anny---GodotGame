@@ -114,7 +114,7 @@ func _physics_process(delta):
 			elif Input.is_action_just_pressed("Up_Input") and is_on_floor():
 				current_state = main_character_states.JUMPING # JUMPING
 				jump()
-			elif velocity.x != 0:
+			elif velocity.x != 0 and not Input.is_action_pressed("Shift"):
 				exit_run()
 				current_state = main_character_states.WALKING # WALKING
 			elif Input.is_action_pressed("Down_Input") and is_on_floor():
@@ -239,17 +239,29 @@ func player_animations():
 	if current_state == main_character_states.JUMPING or current_state == main_character_states.FALLING:
 		main_character_animations.play("Jump")
 		
-	if velocity.x > 0: 
-		main_character_animations.play("Walk")
-		main_character_animations.flip_h = false
-	elif velocity.x < 0: 
-		main_character_animations.play("Walk")
-		main_character_animations.flip_h = true
+	if current_state == main_character_states.WALKING:
+		if velocity.x > 0: 
+			main_character_animations.play("Walk")
+			main_character_animations.flip_h = false
+		elif velocity.x < 0: 
+			main_character_animations.play("Walk")
+			main_character_animations.flip_h = true
+			
 	elif velocity.x == 0 and is_on_floor(): 
 		main_character_animations.play("Idle")
 		
+	
 	if Input.is_action_pressed("Down_Input"):
 		main_character_animations.play("Crouch")
+		
+		
+	if current_state == main_character_states.RUNNING:
+		if velocity.x > 0:
+			main_character_animations.play("Run")
+			main_character_animations.flip_h = false
+		elif velocity.x < 0:
+			main_character_animations.play("Run")
+			main_character_animations.flip_h = true
 		
 ## Gravedad que afecta al player 
 func gravity(delta):

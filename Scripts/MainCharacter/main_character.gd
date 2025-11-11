@@ -112,7 +112,6 @@ func _physics_process(delta):
 				exit_run()
 				current_state = main_character_states.IDLE # IDLE
 			elif Input.is_action_just_pressed("Up_Input") and is_on_floor():
-				#exit_run()
 				current_state = main_character_states.JUMPING # JUMPING
 				jump()
 			elif velocity.x != 0:
@@ -177,7 +176,7 @@ func enter_run():
 	
 # Restablece la velocidad cuando no corre
 func exit_run():
-	speed = 70
+	speed = 100
 
 func take_gun():
 	pass
@@ -207,13 +206,30 @@ func fall():
 ## Otros métodos
 # Se ejecuta cuando se detecta un Input del teclado para mover al main-character
 func player_movement():
-	# Evita mover al player cuando está agachado
-	if current_state == main_character_states.CROUCHING:
-		velocity.x = 0
+	var direction := Input.get_action_strength("Right_Input") - Input.get_action_strength("Left_Input")
+	var max_velocity_speed = speed # Para establecer la velocidades correctamente en cada estados
+	
+	if current_state == main_character_states.RUNNING:
+		max_velocity_speed = running_speed # Establece la velocidad de carrera cuando detecte el estado de carrera del player
 	else:
-		# Movimiento horizontal
-		var direction := Input.get_action_strength("Right_Input") - Input.get_action_strength("Left_Input")
-		velocity.x = direction * speed
+		max_velocity_speed = speed
+	
+	if is_on_floor():
+			if current_state == main_character_states.CROUCHING:
+				velocity.x = 0
+			else:
+				# Reinicia a la velocidad standar de caminar
+				velocity.x = direction * max_velocity_speed
+				
+				# Si no hay input, ir a 0 (deceleración instantánea/rápida en el suelo)
+				if direction == 0:
+					velocity.x = 0
+	elif current_state == main_character_states.JUMPING or current_state == main_character_states.FALLING:
+		# Si hay input, ajusta ligeramente la velocidad, sino, se mantiene la inercia.
+		if direction != 0:
+			# Aquí usar 'lerp' para un control aéreo suave
+			velocity.x = lerp(velocity.x, direction * max_velocity_speed, 0.1)
+
 	
 	# Mover al personaje
 	move_and_slide()

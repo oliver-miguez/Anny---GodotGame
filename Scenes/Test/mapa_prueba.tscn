@@ -1043,7 +1043,6 @@ texture = ExtResource("2_0swn8")
 [node name="MainCharacter" parent="." instance=ExtResource("3_rmeiw")]
 position = Vector2(613, 832.00006)
 scale = Vector2(3, 3)
-jump_force = 360
 
 [node name="PruebaMusica" type="AudioStreamPlayer2D" parent="."]
 autoplay = true

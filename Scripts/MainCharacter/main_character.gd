@@ -12,6 +12,9 @@ var current_state = main_character_states.IDLE # Estado inicial
 const  GRAVITY_VALUE = 980.0 # Fuerza de gravedad
 
 @onready var main_character_animations = $MainCharacterAnimations # Animaciones del MainCharacter 
+@onready var main_character_collishion = $MainCharacterCollishion # Colision del player
+
+
 
 @onready var jump_sound = $JumpSound # Sonido que hace cuando salta
 
@@ -238,9 +241,15 @@ func player_animations():
 		if velocity.x > 0: 
 			main_character_animations.play("Walk")
 			main_character_animations.flip_h = false
+			main_character_collishion.position.x = 0 # Ajusta la posicion de la colision en base al sprite del personaje
+
+
 		elif velocity.x < 0: 
 			main_character_animations.play("Walk")
 			main_character_animations.flip_h = true
+			main_character_collishion.position.x  = 10
+
+
 			
 	elif velocity.x == 0 and is_on_floor(): 
 		main_character_animations.play("Idle")
@@ -254,9 +263,15 @@ func player_animations():
 		if velocity.x > 0:
 			main_character_animations.play("Run")
 			main_character_animations.flip_h = false
+			main_character_collishion.position.x  = 0
+
+
 		elif velocity.x < 0:
 			main_character_animations.play("Run")
 			main_character_animations.flip_h = true
+			main_character_collishion.position.x  = 10
+
+
 		
 ## Gravedad que afecta al player 
 func gravity(delta):

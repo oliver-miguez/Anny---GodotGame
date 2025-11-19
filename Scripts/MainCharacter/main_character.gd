@@ -73,11 +73,9 @@ func _physics_process(delta):
 					print("Crouching")
 					# El jugador PERMANECE en este estado mientras Down_Input esté presionado.
 					if not Input.is_action_pressed("Down_Input") and is_on_floor():
-
-						# 1. Restaura la velocidad (variable speed, aunque player_movement la usará)
+						# Restaura la velocidad 
 						crouch_velocity() 
-						
-						# 2. Decide si ir a IDLE o WALKING. Como velocity.x aún está en 0
+						#  Decide si ir a IDLE o WALKING. Como velocity.x aún está en 0
 						#    al salir del estado, comprobamos si hay input de movimiento.
 						var direction := Input.get_action_strength("Right_Input") - Input.get_action_strength("Left_Input")
 						
@@ -137,10 +135,8 @@ func _physics_process(delta):
 			if is_on_floor():
 				if velocity.x == 0:
 					current_state = main_character_states.IDLE
-					crouch_velocity() # Devuelve el movimiento al player tras cambiar de estado
 				elif velocity.x > 0 ||velocity.x < 0 :
 					current_state = main_character_states.WALKING
-					crouch_velocity()
 		
 		# Estado TakingDamage
 		main_character_states.TAKINGDAMAGE:
@@ -210,11 +206,11 @@ func player_movement():
 	if current_state == main_character_states.RUNNING:
 		max_velocity_speed = running_speed # Establece la velocidad de carrera cuando detecte el estado de carrera del player
 	else:
-		max_velocity_speed = speed
+		max_velocity_speed = speed # Si no mantiene la velocidad normal
 	
 	if is_on_floor():
 			if current_state == main_character_states.CROUCHING:
-				velocity.x = 0
+				velocity.x = 0 # Evita que el player se mueva cuando este agachado
 			else:
 				# Reinicia a la velocidad standar de caminar
 				velocity.x = direction * max_velocity_speed
@@ -222,11 +218,14 @@ func player_movement():
 				# Si no hay input, ir a 0 (deceleración instantánea/rápida en el suelo)
 				if direction == 0:
 					velocity.x = 0
-	elif current_state == main_character_states.JUMPING or current_state == main_character_states.FALLING:
+	else:
+		# current_state == main_character_states.JUMPING or current_state == main_character_states.FALLING:
 		# Si hay input, ajusta ligeramente la velocidad, sino, se mantiene la inercia.
 		if direction != 0:
 			# Aquí usar 'lerp' para un control aéreo suave
 			velocity.x = lerp(velocity.x, direction * max_velocity_speed, 0.01)
+		else:
+			pass
 
 	
 	# Mover al personaje

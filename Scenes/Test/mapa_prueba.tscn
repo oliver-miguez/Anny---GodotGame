@@ -1941,7 +1941,7 @@ size = Vector2(30, 81)
 size = Vector2(30, 382.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujbic"]
-size = Vector2(30, 162)
+size = Vector2(30, 161)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dndut"]
 size = Vector2(108.5, 9.5)
@@ -2067,7 +2067,7 @@ shape = SubResource("RectangleShape2D_llg6g")
 [node name="StaticBody2D3" type="StaticBody2D" parent="Colisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colisions/StaticBody2D3"]
-position = Vector2(1111, 715)
+position = Vector2(1111, 715.5)
 shape = SubResource("RectangleShape2D_ujbic")
 
 [node name="OneWayCollisions" type="Node" parent="."]
@@ -2149,5 +2149,12 @@ one_way_collision = true
 position = Vector2(1651, 843)
 shape = SubResource("RectangleShape2D_fgdlt")
 one_way_collision = true
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="OneWayCollisions"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OneWayCollisions/StaticBody2D5"]
+position = Vector2(0, -2388)
+scale = Vector2(0.99999976, 4.6803217)
+polygon = PackedVector2Array(1124.0002, 645.6821, 1160.0002, 648.24603, 1126, 647.75824)
 
 [connection signal="finished" from="PruebaMusica" to="." method="_on_prueba_musica_finished"]

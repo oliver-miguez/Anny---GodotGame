@@ -154,3 +154,8 @@ shape = SubResource("RectangleShape2D_nlix5")
 stream = ExtResource("5_iomaa")
 volume_db = -12.117
 bus = &"JumpSound"
+
+[node name="RestoreStaminaTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RestoreStaminaTimer" to="." method="_on_restore_stamina_timer_timeout"]

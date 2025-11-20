@@ -11,9 +11,10 @@ var current_state = main_character_states.IDLE # Estado inicial
 @export var speed_null = 0 # Para administrar la velocidad del player por ejemplo cuando se agacha, para evitar que se mueva
 
 @export var player_health = 100 # Valor de la vida del player
+
 var player_current_stamina = 100 # Administra que valor de stamina tiene
 const drain_stamina = 30 # Estamina drenada mientras corre el player
-const restore_stamina = 10 # Restaura de 10 en 10 la estamina cuando no corre
+const restore_stamina = 10 #  Para pestaura de 10 en 10 la estamina cuando no corre
 
 const  GRAVITY_VALUE = 980.0 # Fuerza de gravedad
 
@@ -27,25 +28,10 @@ const  GRAVITY_VALUE = 980.0 # Fuerza de gravedad
 
 ## Se ejecuta en cada frame 
 func _physics_process(delta):
-	if not is_on_floor(): # Aplica gravedad al player  cuando no este en el suelo
+	if not is_on_floor(): # Aplica gdravedad al player  cuando no este en el suelo
 		gravity(delta) 
 	
-	## Funcionamiento de la stamina
-		if current_state == main_character_states.RUNNING:
-			player_current_stamina -= drain_stamina # Reduce el valor de la stamina
-			if player_current_stamina <= 0: # Evita valores negativos
-				player_current_stamina = 0
-				print(player_current_stamina)
-				exit_run() # Reestablece a la velocidad normal
-
-		elif current_state != main_character_states.RUNNING and player_current_stamina < 100:
-			player_current_stamina += restore_stamina # Restaura la stamina
-			print(player_current_stamina)
-
-		
-		
-
-	# Máquina de estados main-character
+	## Máquina de estados main-character
 	match  current_state:
 		#Estado IDLE
 		main_character_states.IDLE:
@@ -283,7 +269,20 @@ func player_animations():
 			main_character_collishion.position.x  = 10
 
 
-		
-## Gravedad que afecta al player 
+## Gravedad que afectda al player 
 func gravity(delta):
 	velocity.y = velocity.y +(GRAVITY_VALUE * delta)
+
+
+## Permite manejar el funcionamiento de la estamina
+func _on_restore_stamina_timer_timeout() -> void:
+	if current_state == main_character_states.RUNNING:
+		player_current_stamina -= drain_stamina # Reduce el valor de la stamina
+		print(player_current_stamina)
+		if player_current_stamina <= 0: # Evita valores negativos
+			player_current_stamina = 0
+			print(player_current_stamina)
+			exit_run()
+	elif current_state != main_character_states.RUNNING and player_current_stamina < 100:
+		player_current_stamina += restore_stamina # Restaura la stamina
+		print(player_current_stamina)

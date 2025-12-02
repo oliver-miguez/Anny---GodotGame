@@ -1943,6 +1943,10 @@ texture = ExtResource("2_0swn8")
 [node name="MainCharacter" parent="." instance=ExtResource("3_rmeiw")]
 position = Vector2(629, 934.00006)
 scale = Vector2(3, 3)
+speed = null
+jump_force = null
+running_speed = null
+speed_null = null
 
 [node name="PruebaMusica" type="AudioStreamPlayer2D" parent="."]
 autoplay = true

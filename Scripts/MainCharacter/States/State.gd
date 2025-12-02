@@ -1,5 +1,5 @@
 """
-PATRÓN DE CLASES DE ESTADO
+PATRÓN DE CLASES DE ESTADO 
 
 Clase base o clase abstracta para administrar estados del mainCharacter
 Sirve como plantilla para definir la estructura del resto de estados

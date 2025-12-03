@@ -1,19 +1,5 @@
-"""
-PATRÓN DE CLASES DE ESTADO 
-
-Clase base o clase abstracta para administrar estados del mainCharacter
-Sirve como plantilla para definir la estructura del resto de estados
-""" 
-extends RefCounted
-class_name  State
-
-# Referencia al MainCharacter para poder trabajar con sus variables y métodos
-var character:MainCharacter = null
-
-## Constructor
-# Para poder hacer referencia en las clases de estados del MainCharacter
-func _init(new_character: MainCharacter):
-	character = new_character
+extends State
+class_name RunningState
 
 """
 Lógica de inicio

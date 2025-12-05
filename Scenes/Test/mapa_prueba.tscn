@@ -1941,7 +1941,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_0swn8")
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_rmeiw")]
-position = Vector2(629, 934.00006)
+position = Vector2(443, 194.00006)
 scale = Vector2(3, 3)
 
 [node name="PruebaMusica" type="AudioStreamPlayer2D" parent="."]
@@ -1957,6 +1957,10 @@ position = Vector2(754, 744)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colisiones/Floor1"]
 position = Vector2(226.75, 217)
+shape = SubResource("RectangleShape2D_0swn8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colisiones/Floor1"]
+position = Vector2(220, -505)
 shape = SubResource("RectangleShape2D_0swn8")
 
 [node name="Right_wall" type="StaticBody2D" parent="Colisiones"]

@@ -41,15 +41,13 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_pressed("ui_down"):
 		velocity.x = 0
 		
-	elif is_on_floor():
-		if Input.is_action_pressed("ui_up"):
-			velocity.y = jump_force
-		else:
-			velocity.y = GRAVITY_VALUE
-	# Idle
-	else: 
-		velocity.x=0
-
+	# Saltar
+	elif Input.is_action_pressed("ui_up"):
+		velocity.y = -jump_force
+		
+	# Importante para frenar al player y que no camine infinitamente
+	else:
+		velocity.x = 0
 ##Función que aplica una gravedad al player
 func gravity(delta):
 	velocity.y = velocity.y +(GRAVITY_VALUE * delta)

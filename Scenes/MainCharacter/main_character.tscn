@@ -186,9 +186,8 @@ walk_state = NodePath("../Walk")
 crouch_state = NodePath("../Crouch")
 father = NodePath("../..")
 
-[node name="Crouch" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "walk_state", "run_state", "father")]
+[node name="Crouch" type="Node" parent="FSM" node_paths=PackedStringArray("walk_state", "run_state", "father")]
 script = ExtResource("11_7tkxx")
-idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
 run_state = NodePath("../Run")
 father = NodePath("../..")

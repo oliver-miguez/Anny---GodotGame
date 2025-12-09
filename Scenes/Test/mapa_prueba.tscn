@@ -1950,30 +1950,30 @@ autoplay = true
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_fub7l")
 
-[node name="Colisiones" type="Node" parent="."]
+[node name="Collisions" type="Node" parent="."]
 
-[node name="Floor1" type="StaticBody2D" parent="Colisiones"]
+[node name="Floor1" type="StaticBody2D" parent="Collisions"]
 position = Vector2(754, 744)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisiones/Floor1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Floor1"]
 position = Vector2(226.75, 217)
 shape = SubResource("RectangleShape2D_0swn8")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colisiones/Floor1"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/Floor1"]
 position = Vector2(220, -505)
 shape = SubResource("RectangleShape2D_0swn8")
 
-[node name="Right_wall" type="StaticBody2D" parent="Colisiones"]
+[node name="Right_wall" type="StaticBody2D" parent="Collisions"]
 position = Vector2(2, 62)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisiones/Right_wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Right_wall"]
 position = Vector2(1686.5, 511.5)
 shape = SubResource("RectangleShape2D_rmeiw")
 
-[node name="Left_wall" type="StaticBody2D" parent="Colisiones"]
+[node name="Left_wall" type="StaticBody2D" parent="Collisions"]
 position = Vector2(2, 68)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisiones/Left_wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Left_wall"]
 position = Vector2(278, 452.25)
 shape = SubResource("RectangleShape2D_mh7lf")
 

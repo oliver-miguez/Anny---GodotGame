@@ -13,33 +13,37 @@ const  GRAVITY_VALUE = 980.0 # Fuerza de gravedad
 
 ##Función que se ejecuta en cada frame 
 func _physics_process(delta):
-	if not is_on_floor(): # Aplica gravedad al player  cuando no este en el suelo
+	# Aplica gravedad al player  cuando no este en el suelo
+	if not is_on_floor():
 		gravity(delta)
 		 
-	move_and_slide()
+	move_and_slide() # Permite el movimiento en el player (OBLIGATORIO)
 
 ## Movimientos del player
 func _input(_event: InputEvent) -> void:
+	# Correr a la izquierda
 	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("Shift"):
 		velocity.x =-running_speed
-		
+	
+	# Correr a la derecha
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("Shift"):
 		velocity.x =running_speed
-		
+	
+	# Andar a la derecha
 	elif Input.is_action_pressed("ui_right"):
 		velocity.x=100
-		
+	
+	# Andar a la izquierda
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x=-100   
 	
+	# Agacharse
 	elif Input.is_action_pressed("ui_down"):
 		velocity.x = 0
 	
+	# Idle
 	else: 
 		velocity.x=0
-			
-	#if is_on_floor() and event.is_action("ui_up"):
-		#velocity.y=-1000
 
 ##Función que aplica una gravedad al player
 func gravity(delta):

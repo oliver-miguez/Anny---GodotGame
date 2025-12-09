@@ -20,11 +20,20 @@ func _physics_process(delta):
 
 ## Movimientos del player
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("Shift"):
+		velocity.x =-running_speed
+		
+	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("Shift"):
+		velocity.x =running_speed
+		
+	elif Input.is_action_pressed("ui_right"):
 		velocity.x=100
 		
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x=-100   
+	
+	elif Input.is_action_pressed("ui_down"):
+		velocity.x = 0
 	
 	else: 
 		velocity.x=0

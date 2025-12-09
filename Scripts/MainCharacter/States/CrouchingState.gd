@@ -1,26 +1,15 @@
-extends State
-class_name CrouchingState
+extends "res://Scripts/GeneralStates/Util/State.gd"
 
-"""
-Lógica de inicio
-Comienza animaciones, establece velocidades especiales o administra alguna accion que debe realizar al inicio
-SE LLAMA UNA SOLA VEZ AL CAMBIAR DE ESTADO
-"""
-func enter():
-	pass
 
-"""
-Lógica de estado
-Decide y devuelve un nuevo estado si hay transición de estado
-UTILIZAR return self PARA RETORNAR EL MISMO ESTADO
-"""
-func process(delta)->State:
-	return self
-	
-"""
-Lógica de salida
-Permite resetear velocidades animaciones al acabar un estado
-SOLO SE LLAMA UNA VEZ
-"""
-func exit():
-	pass
+@export var walk_state:State
+@export var run_state:State
+
+func on_enter():
+	animation_player.play("Crouch")
+
+func state_process(_delta: float) -> void:
+	if father.velocity.x != 0 and Input.is_action_pressed("Shift"):
+		next_state = run_state
+		
+	elif father.velocity.x!=0:
+		next_state=walk_state

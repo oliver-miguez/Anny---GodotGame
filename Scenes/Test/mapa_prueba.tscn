@@ -1944,7 +1944,7 @@ texture = ExtResource("2_0swn8")
 position = Vector2(443, 194.00006)
 scale = Vector2(3, 3)
 
-[node name="PruebaMusica" type="AudioStreamPlayer2D" parent="."]
+[node name="MusicTest" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -1977,4 +1977,4 @@ position = Vector2(2, 68)
 position = Vector2(278, 452.25)
 shape = SubResource("RectangleShape2D_mh7lf")
 
-[connection signal="finished" from="PruebaMusica" to="." method="_on_prueba_musica_finished"]
+[connection signal="finished" from="MusicTest" to="." method="_on_prueba_musica_finished"]

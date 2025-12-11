@@ -20,7 +20,7 @@ func _physics_process(delta):
 	move_and_slide() # Permite el movimiento en el player (OBLIGATORIO)
 
 ## Movimientos del player
-func _input(_event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	# Correr a la izquierda
 	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("Shift"):
 		velocity.x =-running_speed
@@ -41,13 +41,14 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_pressed("ui_down"):
 		velocity.x = 0
 		
-	# Saltar
-	elif Input.is_action_just_pressed("ui_up"):
-		velocity.y = -jump_force
-		
 	# Importante para frenar al player y que no camine infinitamente
 	else:
 		velocity.x = 0
+	
+		# Saltar
+	if is_on_floor and event.is_action("ui_up"):
+		velocity.y = -jump_force
+		
 ##Función que aplica una gravedad al player
 func gravity(delta):
 	velocity.y = velocity.y +(GRAVITY_VALUE * delta)

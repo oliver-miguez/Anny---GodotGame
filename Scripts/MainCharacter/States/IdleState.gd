@@ -18,6 +18,6 @@ func state_process(_delta: float) -> void:
 	elif father.velocity.x == 0 and Input.is_action_pressed("ui_down"):
 		next_state = crouch_state
 	
-	elif Input.is_action_pressed("ui_up"):
+	elif father.velocity.y != 0:
 		next_state = jump_state
 	

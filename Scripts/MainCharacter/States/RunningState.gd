@@ -14,7 +14,7 @@ func state_process(_delta: float) -> void:
 	elif father.velocity.x == 0:
 		next_state = idle_state
 		
-	elif Input.is_action_pressed("ui_up"):
+	elif father.velocity.y != 0:
 		next_state = jump_state
 	
 ## Gira el sprite de la animación

@@ -189,22 +189,18 @@ walk_state = NodePath("../Walk")
 jump_state = NodePath("../Jump")
 father = NodePath("../..")
 
-[node name="Crouch" type="Node" parent="FSM" node_paths=PackedStringArray("walk_state", "jump_state", "idle_state", "father")]
+[node name="Crouch" type="Node" parent="FSM" node_paths=PackedStringArray("walk_state", "jump_state", "father")]
 script = ExtResource("11_7tkxx")
 walk_state = NodePath("../Walk")
 jump_state = NodePath("../Jump")
+father = NodePath("../..")
+
+[node name="Jump" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "father")]
+script = ExtResource("12_l6ccf")
 idle_state = NodePath("../Idle")
 father = NodePath("../..")
 
-[node name="Jump" type="Node" parent="FSM" node_paths=PackedStringArray("fall_state", "father")]
-script = ExtResource("12_l6ccf")
-fall_state = NodePath("../Fall")
-father = NodePath("../..")
-
-[node name="Fall" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "run_state", "walk_state", "crouch_state", "father")]
+[node name="Fall" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "father")]
 script = ExtResource("13_ygope")
 idle_state = NodePath("../Idle")
-run_state = NodePath("../Run")
-walk_state = NodePath("../Walk")
-crouch_state = NodePath("../Crouch")
 father = NodePath("../..")

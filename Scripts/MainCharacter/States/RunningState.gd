@@ -16,15 +16,3 @@ func state_process(_delta: float) -> void:
 		
 	elif father.velocity.y != 0:
 		next_state = jump_state
-	
-## Gira el sprite de la animación
-func flip_animation():
-	var direction = Input.get_axis("ui_left","ui_right")
-
-	if direction > 0:
-		animation_player.flip_h = false
-	else:
-		animation_player.flip_h = true
-		
-func _physics_process(_delta: float) -> void:
-	flip_animation()

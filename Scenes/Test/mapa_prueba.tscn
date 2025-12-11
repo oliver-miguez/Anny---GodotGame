@@ -1941,7 +1941,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_0swn8")
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_rmeiw")]
-position = Vector2(443, 194.00006)
+position = Vector2(685, 941.00006)
 scale = Vector2(3, 3)
 speed = 150
 running_speed = 250

@@ -8,9 +8,10 @@ class_name MainCharacter
 const  GRAVITY_VALUE = 980.0 # Fuerza de gravedad
 
 @onready var main_character_animations = $MainCharacterAnimations # Animaciones del MainCharacter 
+@onready var main_character_collision = $MainCharacterCollision # Colisión del player
 
 @onready var jump_sound = $JumpSound # Sonido que hace cuando salta
-var can_jump = true
+var can_jump = true # Para evitar saltar infinitamente
 
 
 ##Función que se ejecuta en cada frame 
@@ -30,14 +31,15 @@ func _input(event: InputEvent) -> void:
 	# Correr a la derecha
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("Shift"):
 		velocity.x =running_speed
-	
+
 	# Andar a la derecha
 	elif Input.is_action_pressed("ui_right"):
 		velocity.x=100
-	
+
 	# Andar a la izquierda
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x=-100   
+
 	
 	# Agacharse
 	elif Input.is_action_pressed("ui_down"):

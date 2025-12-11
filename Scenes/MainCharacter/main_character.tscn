@@ -151,7 +151,7 @@ animation = &"Run"
 autoplay = "Idle"
 frame_progress = 0.5074577
 
-[node name="MainCharacterCollishion" type="CollisionShape2D" parent="."]
+[node name="MainCharacterCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-4.5, 5)
 shape = SubResource("RectangleShape2D_nlix5")
 

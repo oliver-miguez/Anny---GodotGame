@@ -10,6 +10,8 @@ const  GRAVITY_VALUE = 980.0 # Fuerza de gravedad
 @onready var main_character_animations = $MainCharacterAnimations # Animaciones del MainCharacter 
 
 @onready var jump_sound = $JumpSound # Sonido que hace cuando salta
+var can_jump = true
+
 
 ##Función que se ejecuta en cada frame 
 func _physics_process(delta):
@@ -45,9 +47,13 @@ func _input(event: InputEvent) -> void:
 	else:
 		velocity.x = 0
 	
-		# Saltar
-	if is_on_floor and event.is_action("ui_up"):
+	# Saltar
+	if is_on_floor and event.is_action("ui_up") and can_jump:
 		velocity.y = -jump_force
+		can_jump = false
+	else:
+		if velocity.y == 0:
+			can_jump = true
 		
 ##Función que aplica una gravedad al player
 func gravity(delta):

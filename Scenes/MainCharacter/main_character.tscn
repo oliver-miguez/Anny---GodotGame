@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://24wdatym248p"]
+[gd_scene load_steps=29 format=3 uid="uid://24wdatym248p"]
 
 [ext_resource type="Script" uid="uid://geoojyf7jgb2" path="res://Scripts/MainCharacter/main_character.gd" id="1_i00kt"]
 [ext_resource type="Texture2D" uid="uid://vbuq6wcagru1" path="res://Art/MainCharacter/Idle/MainCharater-Idle.png" id="2_cctys"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://b1ch5ly3ytfev" path="res://Scripts/MainCharacter/States/WalkingState.gd" id="9_vyxe4"]
 [ext_resource type="Script" uid="uid://dy2s574dxbvka" path="res://Scripts/MainCharacter/States/CrouchingState.gd" id="11_7tkxx"]
 [ext_resource type="Script" uid="uid://c155xdk1v514i" path="res://Scripts/MainCharacter/States/JumpingState.gd" id="12_l6ccf"]
-[ext_resource type="Script" uid="uid://c7cpl6cxdnrdk" path="res://Scripts/MainCharacter/States/FallingState.gd" id="13_ygope"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cri0l"]
 atlas = ExtResource("2_gy7ys")
@@ -197,10 +196,5 @@ father = NodePath("../..")
 
 [node name="Jump" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "father")]
 script = ExtResource("12_l6ccf")
-idle_state = NodePath("../Idle")
-father = NodePath("../..")
-
-[node name="Fall" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "father")]
-script = ExtResource("13_ygope")
 idle_state = NodePath("../Idle")
 father = NodePath("../..")

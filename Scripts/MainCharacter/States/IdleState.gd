@@ -20,3 +20,4 @@ func state_process(_delta: float) -> void:
 	
 	elif Input.is_action_pressed("ui_up"):
 		next_state = jump_state
+	

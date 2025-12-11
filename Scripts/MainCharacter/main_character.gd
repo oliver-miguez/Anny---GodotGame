@@ -42,7 +42,7 @@ func _input(_event: InputEvent) -> void:
 		velocity.x = 0
 		
 	# Saltar
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_just_pressed("ui_up"):
 		velocity.y = -jump_force
 		
 	# Importante para frenar al player y que no camine infinitamente

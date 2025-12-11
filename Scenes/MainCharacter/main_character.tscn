@@ -175,27 +175,25 @@ crouch_state = NodePath("../Crouch")
 jump_state = NodePath("../Jump")
 father = NodePath("../..")
 
-[node name="Walk" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "run_state", "crouch_state", "jump_state", "father")]
+[node name="Walk" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "father")]
 script = ExtResource("9_vyxe4")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
-crouch_state = NodePath("../Crouch")
 jump_state = NodePath("../Jump")
 father = NodePath("../..")
 
-[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "walk_state", "crouch_state", "jump_state", "father")]
+[node name="Run" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "father")]
 script = ExtResource("9_7tkxx")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
-crouch_state = NodePath("../Crouch")
 jump_state = NodePath("../Jump")
 father = NodePath("../..")
 
-[node name="Crouch" type="Node" parent="FSM" node_paths=PackedStringArray("walk_state", "run_state", "jump_state", "father")]
+[node name="Crouch" type="Node" parent="FSM" node_paths=PackedStringArray("walk_state", "jump_state", "idle_state", "father")]
 script = ExtResource("11_7tkxx")
 walk_state = NodePath("../Walk")
-run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
+idle_state = NodePath("../Idle")
 father = NodePath("../..")
 
 [node name="Jump" type="Node" parent="FSM" node_paths=PackedStringArray("fall_state", "father")]
@@ -203,10 +201,10 @@ script = ExtResource("12_l6ccf")
 fall_state = NodePath("../Fall")
 father = NodePath("../..")
 
-[node name="Fall" type="Node" parent="FSM" node_paths=PackedStringArray("walk_state", "run_state", "crouch_state", "idle_state", "father")]
+[node name="Fall" type="Node" parent="FSM" node_paths=PackedStringArray("idle_state", "run_state", "walk_state", "crouch_state", "father")]
 script = ExtResource("13_ygope")
-walk_state = NodePath("../Walk")
-run_state = NodePath("../Run")
-crouch_state = NodePath("../Crouch")
 idle_state = NodePath("../Idle")
+run_state = NodePath("../Run")
+walk_state = NodePath("../Walk")
+crouch_state = NodePath("../Crouch")
 father = NodePath("../..")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bondak2y8miye"]
+[gd_scene load_steps=9 format=3 uid="uid://bondak2y8miye"]
 
 [ext_resource type="Script" uid="uid://56t5chyavf8x" path="res://Scripts/Test/mapa_prueba.gd" id="1_rmeiw"]
 [ext_resource type="Texture2D" uid="uid://djl2pfsg8i1x3" path="res://Art/MapArt/BattleMap/Map.png" id="2_0swn8"]
 [ext_resource type="Texture2D" uid="uid://b64hkho4prp4o" path="res://Art/MapArt/City/Sprite-Sheet.jpg" id="2_fub7l"]
 [ext_resource type="PackedScene" uid="uid://24wdatym248p" path="res://Scenes/MainCharacter/main_character.tscn" id="3_rmeiw"]
+[ext_resource type="PackedScene" uid="uid://dxoou5h36a4hy" path="res://Scenes/Objects/Box/box.tscn" id="5_rmeiw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0swn8"]
 size = Vector2(1430.5, 53)
@@ -59,5 +60,8 @@ position = Vector2(251, 11)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Left_wall"]
 position = Vector2(29, 507)
 shape = SubResource("RectangleShape2D_mh7lf")
+
+[node name="Box" parent="." instance=ExtResource("5_rmeiw")]
+position = Vector2(65, 79)
 
 [connection signal="finished" from="MusicTest" to="." method="_on_prueba_musica_finished"]

@@ -20,6 +20,7 @@ func _physics_process(delta):
 	# Aplica gravedad al player  cuando no este en el suelo
 	if not is_on_floor():
 		gravity(delta)
+		
 	flip_animation()
 	move_and_slide() # Permite el movimiento en el player (OBLIGATORIO)
 
@@ -59,6 +60,7 @@ func _input(event: InputEvent) -> void:
 		if velocity.y == 0:
 			#main_character_collision.position.y = 5
 			can_jump = true
+			
 ##Función que aplica una gravedad al player
 func gravity(delta):
 	velocity.y = velocity.y +(GRAVITY_VALUE * delta)

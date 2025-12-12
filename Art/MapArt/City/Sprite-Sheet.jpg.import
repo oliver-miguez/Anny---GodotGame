@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djl2pfsg8i1x3"
-path="res://.godot/imported/Map.png-8baa2f4128459f1cbf56a8daeaa59703.ctex"
+uid="uid://b64hkho4prp4o"
+path="res://.godot/imported/Sprite-Sheet.jpg-ddf1f51c15f47fcdff33b1dbb0f4ad77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/MapArt/Map.png"
-dest_files=["res://.godot/imported/Map.png-8baa2f4128459f1cbf56a8daeaa59703.ctex"]
+source_file="res://Art/MapArt/City/Sprite-Sheet.jpg"
+dest_files=["res://.godot/imported/Sprite-Sheet.jpg-ddf1f51c15f47fcdff33b1dbb0f4ad77.ctex"]
 
 [params]
 

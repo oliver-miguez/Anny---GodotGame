@@ -26,8 +26,14 @@ var ammo_scene: Ammo
 
 var can_move = true
 
+func _ready() -> void:
+	CameraManager.position_player1 = self.position
+
 ##Función que se ejecuta en cada frame 
 func _physics_process(delta):
+	
+	CameraManager.position_player1 = $".".position
+	
 	# Aplica gravedad al player  cuando no este en el suelo
 	if not is_on_floor():
 		gravity(delta)

@@ -23,9 +23,13 @@ var ammo_scene: Ammo
 # Posición en la que spawnea la bala
 @onready var ammo_spawn_point = $AmmoSpawnPoint
 
+func _ready() -> void:
+	CameraManager.position_player2 = self.position
 
 ##Función que se ejecuta en cada frame 
 func _physics_process(delta):
+	CameraManager.position_player2 = $".".position
+	
 	# Aplica gravedad al player  cuando no este en el suelo
 	if not is_on_floor():
 		gravity(delta)
